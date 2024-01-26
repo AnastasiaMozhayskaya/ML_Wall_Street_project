@@ -74,6 +74,11 @@ model = BiLSTM(1, 128, 3, 1)
 model.load_state_dict(torch.load('model/model_weights.pth'))
 model.eval()
 
+# Получение весов модели из сессионного состояния
+model_weights = st.session_state.model_weights
+
+# Загрузка весов в модель
+model.load_state_dict(model_weights)
 with torch.no_grad():
     test_predictions = model(X_test)
     test_loss = criterion(test_predictions, y_test.view(-1, 1))

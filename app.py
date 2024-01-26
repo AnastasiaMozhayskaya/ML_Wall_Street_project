@@ -15,6 +15,16 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title('ML Wall Street')
 st.image('images/img.png')
 
+# Загрузка весов модели (выполняется только при первом запуске)
+@st.cache_data
+def load_model_weights():
+    return torch.load('model/model_weights.pth')
+
+# Сохранение весов модели в сессионном состоянии
+if 'model_weights' not in st.session_state:
+    st.session_state.model_weights = load_model_weights()
+
+# @st.cache_data
 # Функция для получения данных о ценах акций
 def get_stock_data():
     dow_tickers = ['UNH', 'MSFT', 'GS', 'HD', 'AMGN', 'MCD', 'CAT', 'CRM', 'V', 'BA', 'HON', 'TRV', 'AAPL', 'AXP', 'JPM', 'IBM', 'JNJ', 'WMT', 'PG', 'CVX', 'MRK', 'MMM', 'NKE', 'DIS', 'KO', 'DOW', 'CSCO', 'INTC', 'VZ', 'WBA']
