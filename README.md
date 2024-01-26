@@ -11,4 +11,5 @@
 ![картинка](images/3.png)
 ![картинка](images/4.png)
 ![картинка](images/5.png)
+![картинка](images/5a.png)
 ![картинка](images/6.png)
